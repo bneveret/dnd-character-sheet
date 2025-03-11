@@ -1,16 +1,15 @@
 const express = require('express');
 const dotenv = require("dotenv");
-const session = require('express-session');
+//const session = require('express-session');
 const mongodb = require('./config/database');
 const routes = require('./routes');
 
-dotenv.config();
+require('dotenv').config();
 
 const port = process.env.PORT || 8080;
 const app = express();
 
-
-
+app.use(routes);
 
 
 mongodb.initDb((err) => {
