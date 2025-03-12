@@ -1,0 +1,105 @@
+### GET ALL
+GET http://localhost:8080/ 
+Content-Type: application/json
+
+### GET BY ID
+GET http://localhost:8080/
+Content-Type: application/json
+
+### ADD NEW
+POST http://localhost:8080// HTTP/1.1
+Content-Type: application/json
+
+### UPDATE BY ID
+PUT http://localhost:8080/ HTTP/1.1
+Content-Type: application/json
+
+### DELETE
+DELETE http://localhost:8080/ HTTP/1.1
+Content-Type: application/json
+
+
+### DEPLOY TO RENDER
+
+### GET ALL USERS
+GET https://mythsmith.onrender.com
+Content-Type: application/json
+
+### GET USERS BY ID
+GET https://mythsmith.onrender.com
+Content-Type: application/json
+
+### POST NEW USER
+POST https://mythsmith.onrender.com HTTP/1.1
+Content-Type: application/json
+
+### UPDATE USER 
+PUT https://mythsmith.onrender.com HTTP/1.1
+Content-Type: application/json
+
+### DELETE USER BY ID 
+DELETE https://mythsmith.onrender.com/ HTTP/1.1
+Content-Type: application/json
+
+
+### GET ALL CHARACTERS
+GET https://mythsmith.onrender.com
+Content-Type: application/json
+
+### GET CHARACTER BY ID
+GET https://mythsmith.onrender.com
+Content-Type: application/json
+
+### POST NEW CHARACTER
+POST https://mythsmith.onrender.com HTTP/1.1
+Content-Type: application/json
+
+### UPDATE CHARACTER 
+PUT https://mythsmith.onrender.com HTTP/1.1
+Content-Type: application/json
+
+### DELETE CHARACTER BY ID 
+DELETE https://mythsmith.onrender.com/ HTTP/1.1
+Content-Type: application/json
+
+
+### GET ALL CLASSES
+GET https://mythsmith.onrender.com
+Content-Type: application/json
+
+### GET CLASS BY ID
+GET https://mythsmith.onrender.com
+Content-Type: application/json
+
+### POST NEW CLASS
+POST https://mythsmith.onrender.com HTTP/1.1
+Content-Type: application/json
+
+### UPDATE CLASS 
+PUT https://mythsmith.onrender.com HTTP/1.1
+Content-Type: application/json
+
+### DELETE CLASS BY ID 
+DELETE https://mythsmith.onrender.com/ HTTP/1.1
+Content-Type: application/json
+
+
+### GET ALL ITEMS
+GET https://mythsmith.onrender.com
+Content-Type: application/json
+
+### GET ITEM BY ID
+GET https://mythsmith.onrender.com
+Content-Type: application/json
+
+### POST NEW ITEM
+POST https://mythsmith.onrender.com HTTP/1.1
+Content-Type: application/json
+
+### UPDATE ITEM 
+PUT https://mythsmith.onrender.com HTTP/1.1
+Content-Type: application/json
+
+### DELETE ITEM BY ID 
+DELETE https://mythsmith.onrender.com/ HTTP/1.1
+Content-Type: application/json
