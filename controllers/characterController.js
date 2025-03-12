@@ -2,19 +2,28 @@ const mongodb = require('../config/database');
 const { ObjectId } = require("mongodb");
 
 const getAll = async (req, res) => {
-  const result = await mongodb.getDb().db().collection('Character').find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
-  });
-
+  const db = mongodb.getDb();
+  const result = await db.collection('Character').find().toArray();
+  res.setHeader('Content-Type', 'application/json');
+    res.status(200).json(result);
   };
 
   const getSingle = async (req, res) => {
-    const characterId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('Character').findOne({ _id: characterId });
+    try {
+      const characterId = new ObjectId(req.params.id);
+      const db = mongodb.getDb();
+      const result = await db.collection('Character').findOne({ _id: characterId });
+  
+      if (!result) {
+        return res.status(404).json({ message: 'Character not found' });
+      }
+  
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(result);
+    } catch (error) {
+      console.error('Error getting character by ID', error);
+      return res.status(500).json({ message: 'Failed to retrieve character' });
+    }
   };
 
   const createCharacter = async (req, res) => {
@@ -33,7 +42,8 @@ const getAll = async (req, res) => {
         birthday,
       };
 
-      const result = await mongodb.getDb().db().collection('Character').insertOne(newCharacter);
+      const db = mongodb.getDb();
+      const result = await db.collection('Character').insertOne(newCharacter);
 
       if (result.acknowledged) {
         return res.status(201).json({ id: result.insertedId });
@@ -42,7 +52,7 @@ const getAll = async (req, res) => {
       }
 
     } catch (error) {
-      console.error('Error creating contact', error);
+      console.error('Error creating character', error);
       return res.status(500).json({ message: 'Failed to create character' });
     };
   
@@ -65,7 +75,8 @@ const getAll = async (req, res) => {
       if (alignment) updateInfo.alignment = alignment;
       if (birthday) updateInfo.birthday = birthday;
   
-      const result = await mongodb.getDb().db().collection('Character').updateOne(
+      const db = mongodb.getDb();
+      const result = await db.collection('Character').updateOne(
         { _id: characterId },
         { $set: updateInfo }
       );
@@ -84,8 +95,9 @@ const getAll = async (req, res) => {
   const deleteCharacter = async (req, res) => {
     try {
       const characterId = new ObjectId(req.params.id);
-  
-      const result = await mongodb.getDb().db().collection('Character').deleteOne({ _id: characterId });
+
+      const db = mongodb.getDb();
+      const result = await db.collection('Character').deleteOne({ _id: characterId });
   
       if (result.deletedCount === 1) {
         return res.status(204).json({ message: 'Character deleted' });

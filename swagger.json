@@ -5,10 +5,10 @@
     "description": "D&D Character Creator",
     "version": "1.0.0"
   },
-  "host": "https://mythsmith.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/users/": {
