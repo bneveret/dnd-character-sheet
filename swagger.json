@@ -5,10 +5,10 @@
     "description": "D&D Character Creator",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "https://mythsmith.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/users/": {
@@ -149,6 +149,12 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -353,16 +359,6 @@
             "type": "string"
           }
         ],
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/api-docs/": {
-      "get": {
-        "description": "",
         "responses": {
           "default": {
             "description": ""
