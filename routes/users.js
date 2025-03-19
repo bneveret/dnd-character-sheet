@@ -8,9 +8,9 @@ router.get('/', userController.getAll);
 
 router.get('/:id', userController.getSingle);
 
-router.post('/', /*valid.rules,*/ userController.createUser);
+router.post('/', userController.createUser);
 
-router.put('/:id', /*valid.rules,*/ userController.updateUser);
+router.put('/:id', userController.updateUser);
 
 router.delete('/:id', userController.deleteUser);
 

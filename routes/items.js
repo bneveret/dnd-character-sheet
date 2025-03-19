@@ -8,9 +8,9 @@ router.get('/', itemController.getAll);
 
 router.get('/:id', itemController.getSingle);
 
-router.post('/', /*valid.rules,*/ itemController.createItem);
+router.post('/', itemController.createItem);
 
-router.put('/:id', /*valid.rules,*/ itemController.updateItem);
+router.put('/:id', itemController.updateItem);
 
 router.delete('/:id', itemController.deleteItem);
 

@@ -1,13 +1,13 @@
 ### GET ALL
-GET http://localhost:8080/ 
+GET http://localhost:8080/Characters
 Content-Type: application/json
 
 ### GET BY ID
-GET http://localhost:8080/
+GET http://localhost:8080/Characters/
 Content-Type: application/json
 
 ### ADD NEW
-POST http://localhost:8080// HTTP/1.1
+POST http://localhost:8080/Characters/ HTTP/1.1
 Content-Type: application/json
 
 ### UPDATE BY ID

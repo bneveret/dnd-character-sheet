@@ -31,9 +31,9 @@ const getAll = async (req, res) => {
   // Create a new character
   const createCharacter = async (req, res) => {
     try {
-      const { firstName, lastName, species, alignment, age, height, weight, background } = req.body;
+      const { firstName, lastName, species, alignment, birthday} = req.body;
 
-      if (!firstName || !lastName || !species || !alignment || !age || !height || !weight || !background) {
+      if (!firstName || !lastName || !species || !alignment || !birthday) {
         return res.status(400).json({ message: 'Please provide all required fields' });
       }
 
@@ -42,10 +42,7 @@ const getAll = async (req, res) => {
         lastName,
         species,
         alignment,
-        age,
-        height,
-        weight,
-        background,
+        birthday,
 
       };
 
@@ -70,9 +67,9 @@ const getAll = async (req, res) => {
     try {
       const characterId = new ObjectId(req.params.id);
   
-      const { firstName, lastName, species, alignment, age, height, weight, background } = req.body;
+      const { firstName, lastName, species, alignment, birthday} = req.body;
   
-      if (!firstName && !lastName && !species && !alignment && !age && !height && !weight && !background) {
+      if (!firstName && !lastName && !species && !alignment && !birthday) {
         return res.status(400).json({ message: 'Please provide at least one field to update' });
       }
   
@@ -81,10 +78,7 @@ const getAll = async (req, res) => {
       if (lastName) updateInfo.lastName = lastName;
       if (species) updateInfo.species = species;
       if (alignment) updateInfo.alignment = alignment;
-      if (age) updateInfo.age = age;
-      if (height) updateInfo.height = height;
-      if (weight) updateInfo.weight = weight;
-      if (background) updateInfo.background = background;
+      if (birthday) updateInfo.birthday = birthday;
   
       const db = mongodb.getDb();
       const result = await db.collection('Character').updateOne(
