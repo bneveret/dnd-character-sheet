@@ -1,6 +1,7 @@
 const mongodb = require('../config/database');
 const { ObjectId } = require("mongodb");
 
+  // Get all characters
 const getAll = async (req, res) => {
   const db = mongodb.getDb();
   const result = await db.collection('Character').find().toArray();
@@ -8,6 +9,7 @@ const getAll = async (req, res) => {
     res.status(200).json(result);
   };
 
+  // Get a single character by ID
   const getSingle = async (req, res) => {
     try {
       const characterId = new ObjectId(req.params.id);
@@ -26,11 +28,12 @@ const getAll = async (req, res) => {
     }
   };
 
+  // Create a new character
   const createCharacter = async (req, res) => {
     try {
-      const { firstName, lastName, species, alignment, birthday } = req.body;
+      const { firstName, lastName, species, alignment, age, height, weight, background } = req.body;
 
-      if (!firstName || !lastName || !species || !alignment || !birthday) {
+      if (!firstName || !lastName || !species || !alignment || !age || !height || !weight || !background) {
         return res.status(400).json({ message: 'Please provide all required fields' });
       }
 
@@ -39,7 +42,11 @@ const getAll = async (req, res) => {
         lastName,
         species,
         alignment,
-        birthday,
+        age,
+        height,
+        weight,
+        background,
+
       };
 
       const db = mongodb.getDb();
@@ -58,13 +65,14 @@ const getAll = async (req, res) => {
   
   };
 
+  // Update a character
   const updateCharacter = async (req, res) => {
     try {
       const characterId = new ObjectId(req.params.id);
   
-      const { firstName, lastName, species, alignment, birthday } = req.body;
+      const { firstName, lastName, species, alignment, age, height, weight, background } = req.body;
   
-      if (!firstName && !lastName && !species && !alignment && !birthday) {
+      if (!firstName && !lastName && !species && !alignment && !age && !height && !weight && !background) {
         return res.status(400).json({ message: 'Please provide at least one field to update' });
       }
   
@@ -73,7 +81,10 @@ const getAll = async (req, res) => {
       if (lastName) updateInfo.lastName = lastName;
       if (species) updateInfo.species = species;
       if (alignment) updateInfo.alignment = alignment;
-      if (birthday) updateInfo.birthday = birthday;
+      if (age) updateInfo.age = age;
+      if (height) updateInfo.height = height;
+      if (weight) updateInfo.weight = weight;
+      if (background) updateInfo.background = background;
   
       const db = mongodb.getDb();
       const result = await db.collection('Character').updateOne(
@@ -92,6 +103,7 @@ const getAll = async (req, res) => {
     }
   };
 
+  // Delete a character
   const deleteCharacter = async (req, res) => {
     try {
       const characterId = new ObjectId(req.params.id);
