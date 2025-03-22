@@ -31,21 +31,20 @@ const getAll = async (req, res) => {
   // Create a new character
   const createCharacter = async (req, res) => {
     try {
-      const { firstName, lastName, species, alignment, age, height, weight, background } = req.body;
+      const { name, species, class_type, abilities, stats, level, items } = req.body;
 
-      if (!firstName || !lastName || !species || !alignment || !age || !height || !weight || !background) {
+      if (!name || !species || !class_type || !abilities || !stats || !level || !items ) {
         return res.status(400).json({ message: 'Please provide all required fields' });
       }
 
       const newCharacter = {
-        firstName,
-        lastName,
+        name,
         species,
-        alignment,
-        age,
-        height,
-        weight,
-        background,
+        class_type,
+        abilities,
+        stats,
+        level,
+        items,
 
       };
 
@@ -70,21 +69,20 @@ const getAll = async (req, res) => {
     try {
       const characterId = new ObjectId(req.params.id);
   
-      const { firstName, lastName, species, alignment, age, height, weight, background } = req.body;
+      const { name, species, class_type, abilities, stats, level, items } = req.body;
   
-      if (!firstName && !lastName && !species && !alignment && !age && !height && !weight && !background) {
+      if (!name && !species && !class_type && !abilities && !stats && !level && !items ) {
         return res.status(400).json({ message: 'Please provide at least one field to update' });
       }
   
       const updateInfo = {}
-      if (firstName) updateInfo.firstName = firstName;
-      if (lastName) updateInfo.lastName = lastName;
+      if (name) updateInfo.name = name;
       if (species) updateInfo.species = species;
-      if (alignment) updateInfo.alignment = alignment;
-      if (age) updateInfo.age = age;
-      if (height) updateInfo.height = height;
-      if (weight) updateInfo.weight = weight;
-      if (background) updateInfo.background = background;
+      if (class_type) updateInfo.class_type = class_type;
+      if (abilities) updateInfo.abilities = abilities;
+      if (stats) updateInfo.stats = stats;
+      if (level) updateInfo.level = level;
+      if (items) updateInfo.items = items;
   
       const db = mongodb.getDb();
       const result = await db.collection('Character').updateOne(
