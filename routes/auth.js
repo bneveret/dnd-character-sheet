@@ -9,7 +9,7 @@ router.get('/login', passport.authenticate('oauth2'));
 router.get('/callback',
   passport.authenticate('oauth2', { failureRedirect: '/' }),
   (req, res) => {
-    res.send('Logged in as ${req.user.profile.displayName}');
+    res.redirect('../api-docs');
   }
 );
 
