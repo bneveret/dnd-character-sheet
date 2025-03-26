@@ -7,10 +7,9 @@ router.get('/login', passport.authenticate('oauth2'));
 
 // Callback route
 router.get('/callback',
-  passport.authenticate('oauth2', { failureRedirect: '/login' }),
+  passport.authenticate('oauth2', { failureRedirect: '/' }),
   (req, res) => {
-    // Successful authentication
-    res.redirect('/');
+    res.redirect('/dashboard');
   }
 );
 
