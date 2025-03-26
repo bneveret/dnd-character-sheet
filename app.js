@@ -6,6 +6,9 @@ const routes = require('./routes');
 
 require('dotenv').config();
 
+const passport = require('passport');
+require('./config/passport')(passport);
+
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -21,6 +24,7 @@ app
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
   })
+  app.use(passport.initialize());
   app.use('/', require('./routes'));
 
 mongodb.initDb((err) => {

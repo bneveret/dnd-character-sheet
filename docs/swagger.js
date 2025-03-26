@@ -7,8 +7,8 @@ const doc = {
   },
   host: 'mythsmith.onrender.com',
   schemes: ['https']
-  // host: 'localhost:8080',
-  // schemes: ['http']
+  //host: 'localhost:8080',
+  //schemes: ['http']
 };
 
 const outputFile = '../swagger.json';
