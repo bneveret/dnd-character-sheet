@@ -9,7 +9,7 @@ router.get('/login', passport.authenticate('oauth2'));
 router.get('/callback',
   passport.authenticate('oauth2', { failureRedirect: '/' }),
   (req, res) => {
-    res.redirect('/dashboard');
+    res.send('Logged in as ${req.user.profile.displayName}');
   }
 );
 
@@ -17,6 +17,7 @@ router.get('/callback',
 router.get('/logout', (req, res) => {
   req.logout((err) => {
     if (err) { return next(err); }
+    req.session.destroy();
     res.redirect('/');
   });
 });

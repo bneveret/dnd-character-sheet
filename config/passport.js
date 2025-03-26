@@ -1,9 +1,9 @@
 const passport = require('passport');
 const OAuth2Strategy = require('passport-oauth2');
-const User = require('../models/User');
+const { getDb } = require('../config/database');
 require('dotenv').config();
 
-
+module.exports = (passport) => {
 passport.use(new OAuth2Strategy(
   {
     authorizationURL: 'https://github.com/login/oauth/authorize',
@@ -14,14 +14,18 @@ passport.use(new OAuth2Strategy(
   },
   async (accessToken, refreshToken, profile, done) => {
     try {
-      let user = await User.findOne({ oauthId: profile.id });
+      const db = getDb();
+        const usersCollection = db.collection('users');
+
+      let user = await usersCollection.findOne({ oauthId: profile.id });
       if (!user) {
-        user = await User.create({
+        user = {
           username: profile.username || profile.displayName,
           oauthProvider: 'github',
           oauthId: profile.id,
           email: profile.email,
-        });
+        };
+        await usersCollection.insertOne(user);
       }
       return done(null, user);
     } catch (err) {
@@ -31,16 +35,19 @@ passport.use(new OAuth2Strategy(
 ));
 
 passport.serializeUser((user, done) => {
-  done(null, user.id);
+  done(null, user.oauthId);
 });
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findById(id);
-    done(null, user);
-  } catch (err) {
-    done(err, null);
+    const db = getDb();
+      const usersCollection = db.collection('users');
+      const user = await usersCollection.findOne({ oauthId: id });
+      done(null, user);
+    } catch (err) {
+      done(err, null);
   }
 });
+};
 
 module.exports = passport;
