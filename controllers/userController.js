@@ -8,7 +8,7 @@ const getAll = async (req, res, next) => {
     const db = mongodb.getDb();
     console.log('Connected to database:', db.databaseName); 
 
-    const usersCollection = db.collection('users');
+    const usersCollection = db.collection('User');
     console.log('Users Collection:', usersCollection.collectionName); 
 
     const result = await usersCollection.find().toArray();
@@ -24,7 +24,7 @@ const getSingle = async (req, res, next) => {
   try {
     const userId = new ObjectId(req.params.id);
     const db = mongodb.getDb();
-    const usersCollection = db.collection('users');
+    const usersCollection = db.collection('User');
     const result = await usersCollection.findOne({ _id: userId });
 
     if (!result) {
@@ -62,7 +62,7 @@ const createUser = async (req, res, next) => {
       phoneNumber
     };
 
-    const result = await db.collection('users').insertOne(newUser);
+    const result = await db.collection('User').insertOne(newUser);
 
     if (result.acknowledged) {
       return res.status(201).json({ id: result.insertedId });
@@ -98,7 +98,7 @@ const updateUser = async (req, res, next) => {
     if (password) updateInfo.password = password;
     if (phoneNumber) updateInfo.phoneNumber = phoneNumber;
 
-    const result = await db.collection('users').updateOne(
+    const result = await db.collection('User').updateOne(
       { _id: userId },
       { $set: updateInfo }
     );
@@ -121,7 +121,7 @@ const deleteUser = async (req, res, next) => {
     const db = mongodb.getDb();
 
     const userId = new ObjectId(req.params.id);
-    const result = await db.collection('users').deleteOne({ _id: userId });
+    const result = await db.collection('User').deleteOne({ _id: userId });
 
     if (result.deletedCount === 1) {
       return res.status(204).json({ message: 'User deleted' });
