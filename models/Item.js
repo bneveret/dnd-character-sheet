@@ -6,7 +6,7 @@ const rules = (req, res, next) => {
         rarity: 'required|email',
         cost: 'required|string',
         description: 'required|string',
-        attunement: 'required|string',
+        damage: 'required|string',
         weight: 'required|string',
         isMagic: 'required|string',
 

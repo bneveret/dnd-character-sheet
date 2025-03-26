@@ -1,0 +1,23 @@
+{
+    "User1": {
+        "firstName": "Sean",
+        "lastName": "Smithy",
+        "email": "seanwon@gmail.com",
+        "favoriteColor": "black",
+        "birthday": "1/28/2000",
+        "timeAvailable": "evenings on weekends",
+        "password": "blackpearl",
+        "phoneNumber": "123-456-7890"
+    },
+    
+    "User2": {
+        "firstName": "Jill",
+        "lastName": "O'Connor",
+        "email": "chilljill@gmail.com",
+        "favoriteColor": "pink",
+        "birthday": "10/25/2005",
+        "timeAvailable": "week nights and weekends",
+        "password": "powerpink",
+        "phoneNumber": "987-654-3210"
+    }
+}

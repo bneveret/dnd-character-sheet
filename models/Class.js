@@ -5,12 +5,12 @@ const rules = (req, res, next) => {
         hitDie: 'required|string',
         primaryAttribute: 'required|email',
         savingThrows: 'required|string',
-        proficiency: 'required|string',
-        hitpointsAtFirstLevel: 'required|string',
-        spellCastingAttribute: 'required|string',
-        spellsKnown: 'required|string',
-        cantripsKnown: 'required|string',
-        spellSlotsPerLevel: 'required|string',
+        skills: 'required|string',
+        preparedSpells: 'required|string',
+        weapons: 'required|string',
+        armor: 'required|string',
+        startEquipment: 'required|string',
+        bonusProficiency: 'required|string',
 
     };
     validator(req.body, valid, {}, (err,status) => {

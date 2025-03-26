@@ -5,8 +5,8 @@ const doc = {
     title: 'Myth Smith',
     description: 'D&D Character Creator'
   },
-  host: 'mythsmith.onrender.com',
-  schemes: ['https']
+  host: 'localhost:8080',
+  schemes: ['http']
   // host: 'localhost:8080',
   // schemes: ['http']
   //mythsmith.onrender.com

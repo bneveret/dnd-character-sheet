@@ -3,22 +3,12 @@ GET http://localhost:8080/Characters
 Content-Type: application/json
 
 ### GET BY ID
-GET http://localhost:8080/characters
+GET http://localhost:8080/characters/67e31f6ec4906e45ea0bd162
 Content-Type: application/json
 
 ### ADD NEW
 POST http://localhost:8080/characters/ HTTP/1.1
 Content-Type: application/json
-
-{
-        "name": "Wolf",
-        "species": "Human",
-        "class_type": "Ranger",
-        "abilities": "Master of Heavy Swords",
-        "stats": "50",
-        "level": "",
-        "items": ""
-    }
 
 ### UPDATE BY ID
 PUT http://localhost:8080/ HTTP/1.1

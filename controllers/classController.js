@@ -31,9 +31,9 @@ const getAll = async (req, res) => {
   // Create a new class
   const createClass = async (req, res) => {
     try {
-      const { className, hitDie, primaryAttribute, savingThrows, proficiency, hitpointsAtFirstLevel, spellCastingAttribute, spellsKnown, cantripsKnown, spellSlotsPerLevel, } = req.body;
+      const { className, hitDie, primaryAttribute, savingThrows, skills, preparedSpells, weapons, armor, startEquipment, bonusProficiency, } = req.body;
 
-      if (!className || !hitDie || !primaryAttribute || !savingThrows || !proficiency || !hitpointsAtFirstLevel || !spellCastingAttribute || !spellsKnown || !cantripsKnown || !spellSlotsPerLevel) {
+      if (!className || !hitDie || !primaryAttribute || !savingThrows || !skills || !preparedSpells || !weapons || !armor || !startEquipment || !bonusProficiency) {
         return res.status(400).json({ message: 'Please provide all required fields' });
       }
 
@@ -42,12 +42,12 @@ const getAll = async (req, res) => {
         hitDie,
         primaryAttribute,
         savingThrows,
-        proficiency,
-        hitpointsAtFirstLevel,
-        spellCastingAttribute,
-        spellsKnown,
-        cantripsKnown,
-        spellSlotsPerLevel,
+        skills,
+        preparedSpells,
+        weapons,
+        armor,
+        startEquipment,
+        bonusProficiency,
 
       };
 
@@ -72,9 +72,9 @@ const getAll = async (req, res) => {
     try {
       const classId = new ObjectId(req.params.id);
   
-      const { className, hitDie, primaryAttribute, savingThrows, proficiency, hitpointsAtFirstLevel, spellCastingAttribute, spellsKnown, cantripsKnown, spellSlotsPerLevel } = req.body;
+      const { className, hitDie, primaryAttribute, savingThrows, skills, preparedSpells, weapons, armor, startEquipment, bonusProficiency } = req.body;
   
-      if (!className && !hitDie && !primaryAttribute && !savingThrows && !proficiency && !hitpointsAtFirstLevel && !spellCastingAttribute && !spellsKnown && !cantripsKnown && !spellSlotsPerLevel) {
+      if (!className && !hitDie && !primaryAttribute && !savingThrows && !skills && !preparedSpells && !weapons && !armor && !startEquipment && !bonusProficiency) {
         return res.status(400).json({ message: 'Please provide at least one field to update' });
       }
   
@@ -83,12 +83,12 @@ const getAll = async (req, res) => {
       if (hitDie) updateInfo.hitDie = hitDie;
       if (primaryAttribute) updateInfo.primaryAttribute = primaryAttribute;
       if (savingThrows) updateInfo.savingThrows = savingThrows;
-      if (proficiency) updateInfo.proficiency = proficiency;
-      if (hitpointsAtFirstLevel) updateInfo.hitpointsAtFirstLevel = hitpointsAtFirstLevel;
-      if (spellCastingAttribute) updateInfo.spellCastingAttribute = spellCastingAttribute;
-      if (spellsKnown) updateInfo.spellsKnown = spellsKnown;
-      if (cantripsKnown) updateInfo.cantripsKnown = cantripsKnown;
-      if (spellSlotsPerLevel) updateInfo.spellSlotsPerLevel = spellSlotsPerLevel;
+      if (skills) updateInfo.skills = skills;
+      if (preparedSpells) updateInfo.preparedSpells = preparedSpells;
+      if (weapons) updateInfo.weapons = weapons;
+      if (armor) updateInfo.armor = armor;
+      if (startEquipment) updateInfo.startEquipment = startEquipment;
+      if (bonusProficiency) updateInfo.bonusProficiency = bonusProficiency;
   
       const db = mongodb.getDb();
       const result = await db.collection('Class').updateOne(

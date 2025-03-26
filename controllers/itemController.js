@@ -31,9 +31,9 @@ const getAll = async (req, res) => {
   // Create a new item
   const createItem = async (req, res) => {
     try {
-      const { itemName, type, rarity, cost, description, attunement, weight, isMagic } = req.body;
+      const { itemName, type, rarity, cost, description, damage, weight, isMagic } = req.body;
 
-      if (!itemName || !type || !rarity || !cost || !description || !attunement || !weight || !isMagic) {
+      if (!itemName || !type || !rarity || !cost || !description || !damage || !weight || !isMagic) {
         return res.status(400).json({ message: 'Please provide all required fields' });
       }
 
@@ -43,7 +43,7 @@ const getAll = async (req, res) => {
         rarity,
         cost,
         description,
-        attunement,
+        damage,
         weight,
         isMagic,
 
@@ -70,9 +70,9 @@ const getAll = async (req, res) => {
     try {
       const itemId = new ObjectId(req.params.id);
   
-      const { itemName, type, rarity, cost, description, attunement, weight, isMagic } = req.body;
+      const { itemName, type, rarity, cost, description, damage, weight, isMagic } = req.body;
   
-      if (!itemName && !type && !rarity && !cost && !description && !attunement && !weight && !isMagic) {
+      if (!itemName && !type && !rarity && !cost && !description && !damage && !weight && !isMagic) {
         return res.status(400).json({ message: 'Please provide at least one field to update' });
       }
   
@@ -82,7 +82,7 @@ const getAll = async (req, res) => {
       if (rarity) updateInfo.rarity = rarity;
       if (cost) updateInfo.cost = cost;
       if (description) updateInfo.description = description;
-      if (attunement) updateInfo.attunement = attunement;
+      if (damage) updateInfo.damage = damage;
       if (weight) updateInfo.weight = weight;
       if (isMagic) updateInfo.isMagic = isMagic;
   

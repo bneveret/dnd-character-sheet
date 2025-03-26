@@ -1,0 +1,64 @@
+{
+ "User1": {
+        "name": "Lia Galanodel",
+        "species": "Elf",
+        "class_type": "Paladin",
+        "abilities": "Strength and Charisma",
+        "stats": {
+            "strength": "10",
+            "craft": "1",
+            "life": "8",
+            "fate": "5",
+            "gold": "5"
+        },
+        "level": "1",
+        "items": "chain mail, long sword, 6 javelin and priest's pack"
+    },
+
+    "User 1": {
+        "name": "Jack Sparrow",
+        "species": "Human",
+        "class_type": "Wizard",
+        "abilities": "Intelligence",
+        "stats": {
+            "strength": "6",
+            "craft": "2",
+            "life": "10",
+            "fate": "3",
+            "gold": "50"
+        },
+        "level": "1",
+        "items": "2 daggers, arcane focus, robe, spellbook, scholar pack"
+    },
+
+    "User2": {
+        "name": "Gladriel",
+        "species": "Wood Elf",
+        "class_type": "Ranger",
+        "abilities": "Dexterity and Wisdom",
+        "stats": {
+            "strength": "10",
+            "craft": "2",
+            "life": "8",
+            "fate": "3",
+            "gold": "300"
+        },
+        "level": "1",
+        "items": "tudded leather armor, shortsword, longbow, 20 arrows, quiver, druid focus and explorer pack"
+    },
+    "User 2": {
+        "name": "BugBear",
+        "species": "Humanoid Bear",
+        "class_type": "Fighter",
+        "abilities": "Dexterity and Strength",
+        "stats": {
+            "strength": "10",
+            "craft": "3",
+            "life": "8",
+            "fate": "2",
+            "gold": "50"
+        },
+        "level": "16",
+        "items": "chain mail, great sword, 8 javelin, scimitar and dungeoneer pack"
+    }
+}
