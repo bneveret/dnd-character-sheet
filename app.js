@@ -13,7 +13,8 @@ app
 .use(session({
   secret: process.env.SESSION_SECRET, 
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: { secure: process.env.NODE_ENV === 'production' }
 }))
 .use(passport.initialize())
 .use(passport.session()) // Enable persistent login
