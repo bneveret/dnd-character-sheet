@@ -23,12 +23,16 @@ app
   })
   app.use('/', require('./routes'));
 
-mongodb.initDb((err) => {
+if (require.main === module) {
+  mongodb.initDb((err) => {
     if (err) {
-      console.log(err);
-    } else {
-      app.listen(port);
-      console.log(`Connected to MongoDB and listening on ${port}`);
+      console.log("Failed to connect to MongoDB", err);
+      process.exit(1);
     }
+    app.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
   });
+}
   
+module.exports = app;
