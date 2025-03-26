@@ -3,7 +3,6 @@ const OAuth2Strategy = require('passport-oauth2');
 const { getDb } = require('../config/database');
 require('dotenv').config();
 
-module.exports = (passport) => {
 passport.use(new OAuth2Strategy(
   {
     authorizationURL: 'https://github.com/login/oauth/authorize',
@@ -48,6 +47,5 @@ passport.deserializeUser(async (id, done) => {
       done(err, null);
   }
 });
-};
 
 module.exports = passport;
