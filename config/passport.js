@@ -1,6 +1,7 @@
 const passport = require('passport');
 const OAuth2Strategy = require('passport-oauth2');
 const { getDb } = require('../config/database');
+const axios = require('axios');
 require('dotenv').config();
 
 passport.use(new OAuth2Strategy(
@@ -11,18 +12,24 @@ passport.use(new OAuth2Strategy(
     clientSecret: process.env.OAUTH_CLIENT_SECRET,
     callbackURL: process.env.OAUTH_CALLBACK_URL,
   },
-  async (accessToken, refreshToken, profile, done) => {
+  async (accessToken, refreshToken, _, done) => {
     try {
       const db = getDb();
-        const usersCollection = db.collection('users');
+      const usersCollection = db.collection('users');
+
+      const response = await axios.get('https://api.github.com/user', {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      });
+  
+      const profile = response.data;
 
       let user = await usersCollection.findOne({ oauthId: profile.id });
       if (!user) {
         user = {
-          username: profile.username || profile.displayName,
+          username: profile.login,
           oauthProvider: 'github',
           oauthId: profile.id,
-          email: profile.email,
+          email: profile.email || null,
         };
         await usersCollection.insertOne(user);
       }
