@@ -91,7 +91,7 @@ const getAll = async (req, res) => {
       );
   
       if (result.matchedCount === 1) {
-        return res.status(204).json({ message: 'Character updated' });
+        return res.status(200).json({ message: 'Character updated' });
       } else {
         return res.status(404).json({ message: 'Character not found' });
       }
@@ -110,7 +110,7 @@ const getAll = async (req, res) => {
       const result = await db.collection('Character').deleteOne({ _id: characterId });
   
       if (result.deletedCount === 1) {
-        return res.status(204).json({ message: 'Character deleted' });
+        return res.status(200).json({ message: 'Character deleted' });
       } else {
         return res.status(404).json({ message: 'Character not found' });
       }

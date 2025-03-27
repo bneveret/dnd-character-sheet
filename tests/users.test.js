@@ -44,7 +44,32 @@ describe("User Routes", () => {
             timeAvailable: "10:00 AM - 6:00 PM",
             phoneNumber: "987-654-3210"
         })
-    })
+    });
+
+    test("PUT/users/:id should update the user", async () => {
+        const response = await request(app).put(`/users/${userId}`).send({
+            firstName: "Jane",
+            lastName: "Smith",
+            email: "jane.smith@example.com",
+            favoriteColor: "Blue",
+            birthday: "1990-01-01",
+            timeAvailable: "10:00 AM - 6:00 PM",
+            password: "newpassword123",
+            phoneNumber: "987-654-3210"
+        });
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual({
+            message: "User updated"
+        });
+    });
+
+    test("DELETE /users/:id should delete the user", async () => {
+        const response = await request(app).delete(`/users/${userId}`);
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual({
+            message: "User deleted"
+        });
+    });
 
 });
 
