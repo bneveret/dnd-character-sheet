@@ -3,7 +3,7 @@ const rules = (req, res, next) => {
     const valid = {
         itemName: 'required|string',
         type: 'required|string',
-        rarity: 'required|email',
+        rarity: 'required|string',
         cost: 'required|string',
         description: 'required|string',
         attunement: 'required|string',

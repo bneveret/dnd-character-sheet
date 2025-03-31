@@ -93,7 +93,7 @@ const getAll = async (req, res) => {
       );
   
       if (result.matchedCount === 1) {
-        return res.status(204).json({ message: 'Item updated' });
+        return res.status(200).json({ message: 'Item updated' });
       } else {
         return res.status(404).json({ message: 'Item not found' });
       }
@@ -112,7 +112,7 @@ const getAll = async (req, res) => {
       const result = await db.collection('Item').deleteOne({ _id: itemId });
   
       if (result.deletedCount === 1) {
-        return res.status(204).json({ message: 'Item deleted' });
+        return res.status(200).json({ message: 'Item deleted' });
       } else {
         return res.status(404).json({ message: 'Item not found' });
       }
