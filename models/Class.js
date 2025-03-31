@@ -3,7 +3,7 @@ const rules = (req, res, next) => {
     const valid = {
         className: 'required|string',
         hitDie: 'required|string',
-        primaryAttribute: 'required|email',
+        primaryAttribute: 'required|string',
         savingThrows: 'required|string',
         proficiency: 'required|string',
         hitpointsAtFirstLevel: 'required|string',
