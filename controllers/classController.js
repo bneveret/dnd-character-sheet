@@ -97,7 +97,7 @@ const getAll = async (req, res) => {
       );
   
       if (result.matchedCount === 1) {
-        return res.status(204).json({ message: 'Class updated' });
+        return res.status(200).json({ message: 'Class updated' });
       } else {
         return res.status(404).json({ message: 'Class not found' });
       }
@@ -116,7 +116,7 @@ const getAll = async (req, res) => {
       const result = await db.collection('Class').deleteOne({ _id: classId });
   
       if (result.deletedCount === 1) {
-        return res.status(204).json({ message: 'Class deleted' });
+        return res.status(200).json({ message: 'Class deleted' });
       } else {
         return res.status(404).json({ message: 'Class not found' });
       }

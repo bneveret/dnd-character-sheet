@@ -104,7 +104,7 @@ const updateUser = async (req, res, next) => {
     );
 
     if (result.matchedCount === 1) {
-      return res.status(204).json({ message: 'User updated' });
+      return res.status(200).json({ message: 'User updated' });
     } else {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -124,7 +124,7 @@ const deleteUser = async (req, res, next) => {
     const result = await db.collection('User').deleteOne({ _id: userId });
 
     if (result.deletedCount === 1) {
-      return res.status(204).json({ message: 'User deleted' });
+      return res.status(200).json({ message: 'User deleted' });
     } else {
       return res.status(404).json({ message: 'User not found' });
     }
