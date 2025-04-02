@@ -1,0 +1,42 @@
+{
+    "swords": {
+        "itemName": "Longsword",
+        "type": "versatile-1d10",
+        "rarity": "Common",
+        "cost": "15",
+        "description": "martial melee weapon",
+        "damage": "1d8",
+        "weight": "3",
+        "isMagic": "no"
+    },
+    "armor": {
+        "itemName": "Leather",
+        "type": "+Dex Mod",
+        "rarity": "common",
+        "cost": "10",
+        "description": "light armor",
+        "damage": "AC11",
+        "weight": "10",
+        "isMagic": "no"
+    },
+    "shields": {
+        "itemName": "Wooden Shield",
+        "type": "simple",
+        "rarity": "Common",
+        "cost": "10",
+        "description": "sturdy simple shield",
+        "damage": "AC+2",
+        "weight": "6",
+        "isMagic": "no"
+    },
+    "daggers": {
+        "itemName": "Songbirds",
+        "type": "dual daggers",
+        "rarity": "rare",
+        "cost": "20",
+        "description": "gain +2 attack with both daggers",
+        "damage": "1d10",
+        "weight": "4",
+        "isMagic": "yes"
+    }
+}

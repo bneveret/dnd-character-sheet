@@ -15,36 +15,6 @@
       "get": {
         "description": "",
         "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/callback": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/auth/logout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/users/": {
-      "get": {
-        "description": "",
-        "responses": {
           "200": {
             "description": "OK"
           },
@@ -96,6 +66,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -182,6 +155,9 @@
           "404": {
             "description": "Not Found"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -231,28 +207,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
+                "name": {
                   "example": "any"
                 },
                 "species": {
                   "example": "any"
                 },
-                "alignment": {
+                "class_type": {
                   "example": "any"
                 },
-                "age": {
+                "abilities": {
                   "example": "any"
                 },
-                "height": {
+                "stats": {
                   "example": "any"
                 },
-                "weight": {
+                "level": {
                   "example": "any"
                 },
-                "background": {
+                "items": {
                   "example": "any"
                 }
               }
@@ -265,6 +238,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -313,28 +289,25 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
+                "name": {
                   "example": "any"
                 },
                 "species": {
                   "example": "any"
                 },
-                "alignment": {
+                "class_type": {
                   "example": "any"
                 },
-                "age": {
+                "abilities": {
                   "example": "any"
                 },
-                "height": {
+                "stats": {
                   "example": "any"
                 },
-                "weight": {
+                "level": {
                   "example": "any"
                 },
-                "background": {
+                "items": {
                   "example": "any"
                 }
               }
@@ -350,6 +323,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -382,12 +358,12 @@
     "/classes/": {
       "get": {
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -400,28 +376,34 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "className": {
                   "example": "any"
                 },
-                "lastName": {
+                "hitDie": {
                   "example": "any"
                 },
-                "email": {
+                "primaryAttribute": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "savingThrows": {
                   "example": "any"
                 },
-                "birthday": {
+                "skills": {
                   "example": "any"
                 },
-                "timeAvailable": {
+                "preparedSpells": {
                   "example": "any"
                 },
-                "password": {
+                "weapons": {
                   "example": "any"
                 },
-                "phoneNumber": {
+                "armor": {
+                  "example": "any"
+                },
+                "startEquipment": {
+                  "example": "any"
+                },
+                "bonusProficiency": {
                   "example": "any"
                 }
               }
@@ -434,6 +416,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -482,28 +467,34 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "className": {
                   "example": "any"
                 },
-                "lastName": {
+                "hitDie": {
                   "example": "any"
                 },
-                "email": {
+                "primaryAttribute": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "savingThrows": {
                   "example": "any"
                 },
-                "birthday": {
+                "skills": {
                   "example": "any"
                 },
-                "timeAvailable": {
+                "preparedSpells": {
                   "example": "any"
                 },
-                "password": {
+                "weapons": {
                   "example": "any"
                 },
-                "phoneNumber": {
+                "armor": {
+                  "example": "any"
+                },
+                "startEquipment": {
+                  "example": "any"
+                },
+                "bonusProficiency": {
                   "example": "any"
                 }
               }
@@ -519,6 +510,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -584,7 +578,7 @@
                 "description": {
                   "example": "any"
                 },
-                "attunement": {
+                "damage": {
                   "example": "any"
                 },
                 "weight": {
@@ -603,6 +597,9 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -666,7 +663,7 @@
                 "description": {
                   "example": "any"
                 },
-                "attunement": {
+                "damage": {
                   "example": "any"
                 },
                 "weight": {
@@ -688,6 +685,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"

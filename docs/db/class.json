@@ -1,0 +1,50 @@
+{
+    "wizard": {
+        "className": "Wizard",
+        "hitDie": "D-6/level",
+        "primaryAttribute": "Intelligence",
+        "savingThrows": "Intelligence and Wisdom",
+        "skills": "Arcana, Insight, Medicine, Nature and Investigation",
+        "preparedSpells": "Level 1-12 2-10 and upto 4 slots",
+        "weapons": "Simple Weapons",
+        "armor": "None",
+        "startEquipment": "2 daggers, arcane focus, robe, spellbook, scholar pack",
+        "bonusProficiency": "Level 1-3: +2, Level 5-8: +3, Level 9-12: +4"
+    },
+    "ranger": {
+        "className": "Ranger",
+        "hitDie": "D-10/level",
+        "primaryAttribute": "Dexterity and Wisdom",
+        "savingThrows": "Strength and Dexterity",
+        "skills": "Animal Handling, Athletics, Insight, Investigation, Stealth and Survival",
+        "preparedSpells": "Level 1-12 2-10 and upto 4 slots",
+        "weapons": "Simple and Martial Weapons",
+        "armor": "Light and Medium armor and shields",
+        "startEquipment": "studded leather armor, shortsword, longbow, 20 arrows, quiver, druid focus and explorer pack",
+        "bonusProficiency": "Level 1-3: +2, Level 5-8: +3, Level 9-12: +4"
+    },
+    "fighter": {
+        "className": "Fighter",
+        "hitDie": "D-10/level",
+        "primaryAttribute": "Dexterity and Strength",
+        "savingThrows": "Strength and Constitution",
+        "skills": "Acrobatics, Animal Handling, Athletics, Insight, Intimidation, Persuasion and Survival ",
+        "preparedSpells": "none - Second Wind 2 then +1 every 3 levels, and Weapon Mastery 3 then +1 every 6 levels",
+        "weapons": "Simple and Martial Weapons",
+        "armor": "Light, Medium and Heavy armor and shields",
+        "startEquipment": "chain mail, great sword, 8 javelin, scimitar and dungeoneer pack",
+        "bonusProficiency": "Level 1-3: +2, Level 5-8: +3, Level 9-12: +4"
+    },
+    "paladin": {
+        "className": "Paladin",
+        "hitDie": "D-10/level",
+        "primaryAttribute": "Strength and Charisma",
+        "savingThrows": "Wisdom and Charisma",
+        "skills": "Athletics, Insight, Intimidation, Persuasion and Medicine",
+        "preparedSpells": "Level 1-12 2-10 and upto 4 slots",
+        "weapons": "Simple and Martial Weapons",
+        "armor": "Light, Medium and Heavy armor and shields",
+        "startEquipment": "chain mail, long sword, 6 javelin, holy symbol and priest's pack",
+        "bonusProficiency": "Level 1-3: +2, Level 5-8: +3, Level 9-12: +4"
+    }
+}
