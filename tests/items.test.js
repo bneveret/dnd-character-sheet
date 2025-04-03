@@ -17,7 +17,7 @@ describe("Items Routes", () => {
             rarity: "Common",
             cost: "10 gp",
             description: "A sturdy broadsword with a simple crossguard and a leather-wrapped handle.",
-            attunement: "None",
+            damage: "1d8 slashing",
             weight: "5 lbs",
             isMagic: "no"
           });
@@ -40,7 +40,7 @@ describe("Items Routes", () => {
             rarity: "Common",
             cost: "10 gp",
             description: "A sturdy broadsword with a simple crossguard and a leather-wrapped handle.",
-            attunement: "None",
+            damage: "1d8 slashing",
             weight: "5 lbs",
             isMagic: "no"
         })
@@ -53,7 +53,7 @@ describe("Items Routes", () => {
             rarity: "Rare",
             cost: "100 gp",
             description: "A sturdy broadsword with a simple ice enchantment.",
-            attunement: "None",
+            damage: "1d8 slashing + 1d4 cold",
             weight: "5 lbs",
             isMagic: "yes"
         });
