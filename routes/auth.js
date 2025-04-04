@@ -3,11 +3,11 @@ const passport = require('passport');
 const router = express.Router();
 
 // Route to initiate OAuth login
-router.get('/login', passport.authenticate('github2'));
+router.get('/login', passport.authenticate('github'));
 
 // Callback route
 router.get('/callback',
-  passport.authenticate('github2', { failureRedirect: '/' }),
+  passport.authenticate('github', { failureRedirect: '/' }),
   (req, res) => {
     res.redirect('../api-docs');
   }
