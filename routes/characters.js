@@ -4,10 +4,11 @@ const router = express.Router();
 
 const characterController = require('../controllers/characterController');
 const valid = require('../models/Character');
-const authorize = passport.authenticate('github', { scope: ['user:username'] });
+
+router.use(passport.authenticate('github', { scope: ['user:username'] }));
 
 
-router.get('/', authorize, characterController.getAll);
+router.get('/', characterController.getAll);
 
 router.get('/:id', characterController.getSingle);
 
