@@ -1,5 +1,5 @@
 const passport = require('passport');
-const OAuth2Strategy = require('passport-oauth2');
+const OAuth2Strategy = require('passport-github2');
 const { getDb } = require('../config/database');
 const axios = require('axios');
 require('dotenv').config();
