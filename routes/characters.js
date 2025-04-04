@@ -5,9 +5,10 @@ const router = express.Router();
 const characterController = require('../controllers/characterController');
 const valid = require('../models/Character');
 
-router.use(passport.authenticate('oauth-bearer', { session: false }));
+//router.use(passport.authenticate('oauth-bearer', { session: false }));
 
-router.get('/', characterController.getAll);
+
+router.get('/', passport, characterController.getAll);
 
 router.get('/:id', characterController.getSingle);
 
