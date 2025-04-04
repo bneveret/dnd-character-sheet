@@ -16,12 +16,12 @@ describe("Class Routes", () => {
             hitDie: "1d8",
             primaryAttribute: "Intelligence",
             savingThrows: "Intelligence, Wisdom",
-            proficiency: "Daggers, darts, slings, quarterstaffs, light crossbows",
-            hitpointsAtFirstLevel: "8",
-            spellCastingAttribute: "Intelligence",
-            spellsKnown: "fireball, magic missile, shield",
-            cantripsKnown: "light, mage hand, prestidigitation",
-            spellSlotsPerLevel: "1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9, 9: 10",
+            skills: "Arcana, History, Insight, Investigation",
+            preparedSpells: "fireball, magic missile, shield",
+            weapons: "dagger, quarterstaff",
+            armor: "light armor",
+            startEquipment: "spellbook, component pouch",
+            bonusProficiency: "Arcana, History",
           });
 
         expect(response.status).toBe(201);
@@ -41,27 +41,27 @@ describe("Class Routes", () => {
             hitDie: "1d8",
             primaryAttribute: "Intelligence",
             savingThrows: "Intelligence, Wisdom",
-            proficiency: "Daggers, darts, slings, quarterstaffs, light crossbows",
-            hitpointsAtFirstLevel: "8",
-            spellCastingAttribute: "Intelligence",
-            spellsKnown: "fireball, magic missile, shield",
-            cantripsKnown: "light, mage hand, prestidigitation",
-            spellSlotsPerLevel: "1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9, 9: 10",
+            skills: "Arcana, History, Insight, Investigation",
+            preparedSpells: "fireball, magic missile, shield",
+            weapons: "dagger, quarterstaff",
+            armor: "light armor",
+            startEquipment: "spellbook, component pouch",
+            bonusProficiency: "Arcana, History",
         })
     });
 
     test("PUT/classes/:id should update the class", async () => {
         const response = await request(app).put(`/classes/${classId}`).send({
-            className: "Mage",
+            className: "Wizard",
             hitDie: "1d8",
             primaryAttribute: "Intelligence",
             savingThrows: "Intelligence, Wisdom",
-            proficiency: "Daggers, darts, slings, quarterstaffs, light crossbows",
-            hitpointsAtFirstLevel: "8",
-            spellCastingAttribute: "Intelligence",
-            spellsKnown: "fireball, magic missile, shield",
-            cantripsKnown: "light, mage hand, prestidigitation",
-            spellSlotsPerLevel: "1: 2, 2: 3, 3: 4, 4: 5, 5: 6, 6: 7, 7: 8, 8: 9, 9: 10",
+            skills: "Arcana, History, Insight, Investigation",
+            preparedSpells: "magic missile, shield",
+            weapons: "dagger, quarterstaff",
+            armor: "light armor",
+            startEquipment: "spellbook, component pouch",
+            bonusProficiency: "Arcana, History",
         });
         expect(response.status).toBe(200);
         expect(response.body).toEqual({
