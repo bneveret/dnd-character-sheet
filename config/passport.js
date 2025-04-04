@@ -15,7 +15,7 @@ passport.use(new OAuth2Strategy(
   async (accessToken, refreshToken, _, done) => {
     try {
       const db = getDb();
-      const usersCollection = db.collection('users');
+      const usersCollection = db.collection('User');
 
       const response = await axios.get('https://api.github.com/user', {
         headers: { Authorization: `Bearer ${accessToken}` }
@@ -47,7 +47,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   try {
     const db = getDb();
-      const usersCollection = db.collection('users');
+      const usersCollection = db.collection('User');
       const user = await usersCollection.findOne({ oauthId: id });
       done(null, user);
     } catch (err) {
