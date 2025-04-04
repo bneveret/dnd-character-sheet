@@ -5,8 +5,7 @@ const router = express.Router();
 const itemController = require('../controllers/itemController');
 const valid = require('../models/Item');
 
-router.use(passport.authenticate('oauth-bearer', { session: false }));
-
+router.use(passport.authenticate('github', { scope: ['user:email'] }));
 router.get('/', itemController.getAll);
 
 router.get('/:id', itemController.getSingle);
