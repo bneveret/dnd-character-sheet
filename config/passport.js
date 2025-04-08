@@ -10,7 +10,7 @@ passport.use(new GitHubStrategy({
   callbackURL: process.env.OAUTH_CALLBACK_URL
 }, async (accessToken, refreshToken, profile, done) => {
   try {
-    const usersCollection = mongodb.getDb().db().collection('User');
+    const usersCollection = mongodb.getDb().collection('User');
     let user = await usersCollection.findOne({ githubId: profile.id });
 
     if (!user) {
@@ -31,7 +31,7 @@ passport.use(new GitHubStrategy({
 passport.serializeUser((user, done) => done(null, user._id));
 passport.deserializeUser(async (id, done) => {
   try {
-  const user = await mongodb.getDb().db().collection('User').findOne({ _id: new ObjectId(id) });
+  const user = await mongodb.getDb().collection('User').findOne({ _id: new ObjectId(id) });
   done(null, user);
   } catch (err) {
     done(err, null);
