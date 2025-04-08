@@ -5,7 +5,7 @@ const router = express.Router();
 const classController = require('../controllers/classController');
 const valid = require('../models/Class'); 
 
-//router.use(passport.authenticate('github', { scope: ['user:email'] }));
+router.use(passport.authenticate('github'));
 
 router.get('/', classController.getAll);
 
