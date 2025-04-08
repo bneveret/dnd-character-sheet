@@ -3,10 +3,16 @@ const dotenv = require("dotenv");
 const session = require('express-session');
 const mongodb = require('./config/database');
 const passport = require('./config/passport');
+const cors = require('cors');
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
 const app = express();
+
+app.use(cors({
+  origin: "https://mythsmith.onrender.com", // or wherever Swagger is running
+  credentials: true // important for cookies/sessions
+}));
 
 app
 .use(express.json())
