@@ -6,9 +6,8 @@ const authorized = (req, res, next) => {
     if (req.isAuthenticated()) return next();
     res.status(401).json({ message: 'Unauthorized' });
     setTimeout(() => {
-        // runs after 3 seconds
+        window.location.replace("https://mythsmith.onrender.com/auth/login");// runs after 3 seconds
       }, 3000);//wait
-      window.location.replace("https://mythsmith.onrender.com/auth/login");//redirect
   };
 
 router.use('/auth', require('./auth'));
