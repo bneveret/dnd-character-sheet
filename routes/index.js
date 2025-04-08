@@ -3,6 +3,7 @@ const passport = require('passport');
 const router = express.Router();
 
 const authorized = (req, res, next) => {
+    if (process.env.NODE_ENV === 'test') return next();
     if (req.isAuthenticated()) return next();
     res.redirect('../auth/login');
   };

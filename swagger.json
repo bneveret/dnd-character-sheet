@@ -225,7 +225,7 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
+          }
         }
       },
       "post": {
@@ -394,7 +394,7 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
+          }
         }
       },
       "post": {
@@ -581,7 +581,7 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
+          }
         }
       },
       "post": {
