@@ -5,7 +5,7 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 const valid = require('../models/User');
 
-router.use(passport.authenticate('github', { scope: ['user:email'] }));
+//router.use(passport.authenticate('github', { scope: ['user:email'] }));
 
 router.get('/', userController.getAll);
 

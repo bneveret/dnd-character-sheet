@@ -17,6 +17,9 @@ app
 }))
 .use(passport.initialize())
 .use(passport.session()) // Enable persistent login
+
+.use(passport.authenticate('github', { session: true }))
+
 .use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader(

@@ -5,7 +5,7 @@ const router = express.Router();
 const characterController = require('../controllers/characterController');
 const valid = require('../models/Character');
 
-router.use(passport.authenticate('github', { scope: ['user:username'] }));
+//router.use(passport.authenticate('github', { scope: ['user:username'] }));
 
 
 router.get('/', characterController.getAll);
