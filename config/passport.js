@@ -10,7 +10,7 @@ passport.use(new GitHubStrategy({
   callbackURL: process.env.OAUTH_CALLBACK_URL
 }, async (accessToken, refreshToken, profile, done) => {
   try {
-    const usersCollection = mongodb.getDb().db().collection('users');
+    const usersCollection = mongodb.getDb().db().collection('User');
     let user = await usersCollection.findOne({ githubId: profile.id });
 
     if (!user) {
