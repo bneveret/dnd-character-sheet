@@ -4,6 +4,7 @@ const session = require('express-session');
 const mongodb = require('./config/database');
 const passport = require('./config/passport');
 const cors = require('cors');
+const allowedOrigins = 'https://mythsmith.onrender.com';
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
@@ -24,16 +25,17 @@ app
 .use(passport.initialize())
 .use(passport.session()) // Enable persistent login
 
-.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-  );
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  next();
-})
+.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}))
+
 .use('/', require('./routes'));
 
 if (require.main === module) {
