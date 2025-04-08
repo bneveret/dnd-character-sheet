@@ -1,40 +1,34 @@
 const express = require('express');
 const dotenv = require("dotenv");
-const session = require('express-session');
 const mongodb = require('./config/database');
-const passport = require('./config/passport');
-const cors = require('cors');
-const allowedOrigins = 'https://mythsmith.onrender.com';
 require('dotenv').config();
+const session = require('express-session');
+require('./auth/github')
 
+const passport = require('./config/passport');
 const port = process.env.PORT || 8080;
 const app = express();
-
-app.use(cors({
-  origin: "https://mythsmith.onrender.com", // or wherever Swagger is running
-  credentials: true // important for cookies/sessions
-}));
 
 app
 .use(express.json())
 .use(session({
-  secret: process.env.SESSION_SECRET, 
+  secret: 'process.env.SESSION_SECRET', 
   resave: false,
-  saveUninitialized: false,
+  saveUninitialized: true,
 }))
 .use(passport.initialize())
 .use(passport.session()) // Enable persistent login
 
-.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-}))
+.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+})
 
 .use('/', require('./routes'));
 

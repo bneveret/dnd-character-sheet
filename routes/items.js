@@ -1,11 +1,9 @@
 const express = require('express');
-const passport = require('passport');
 const router = express.Router();
-
 const itemController = require('../controllers/itemController');
 const valid = require('../models/Item');
 
-router.use(passport.authenticate('github'));
+
 router.get('/', itemController.getAll);
 
 router.get('/:id', itemController.getSingle);
