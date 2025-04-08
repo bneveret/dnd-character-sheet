@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
 const classController = require('../controllers/classController');
 const valid = require('../models/Class'); 
+
 
 router.get('/', classController.getAll);
 

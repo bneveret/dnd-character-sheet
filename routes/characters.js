@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
 const characterController = require('../controllers/characterController');
 const valid = require('../models/Character');
+
 
 router.get('/', characterController.getAll);
 

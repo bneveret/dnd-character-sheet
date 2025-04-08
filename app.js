@@ -1,27 +1,35 @@
 const express = require('express');
 const dotenv = require("dotenv");
-//const session = require('express-session');
 const mongodb = require('./config/database');
-const routes = require('./routes');
-
 require('dotenv').config();
+const session = require('express-session');
 
+const passport = require('./config/passport');
 const port = process.env.PORT || 8080;
 const app = express();
 
 app
-  .use(express.json())
-  .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-    );
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
-  })
-  app.use('/', require('./routes'));
+.use(express.json())
+.use(session({
+  secret: process.env.SESSION_SECRET, 
+  resave: false,
+  saveUninitialized: true,
+}))
+.use(passport.initialize())
+.use(passport.session()) // Enable persistent login
+
+.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  next();
+})
+
+.use('/', require('./routes'));
 
 if (require.main === module) {
   mongodb.initDb((err) => {
