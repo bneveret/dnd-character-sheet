@@ -3,7 +3,6 @@ const dotenv = require("dotenv");
 const mongodb = require('./config/database');
 require('dotenv').config();
 const session = require('express-session');
-require('./auth/github')
 
 const passport = require('./config/passport');
 const port = process.env.PORT || 8080;
