@@ -8,7 +8,7 @@ const authorized = (req, res, next) => {
     setTimeout(() => {
         // runs after 3 seconds
       }, 3000);//wait
-    res.redirect('../auth/login');//redirect
+      window.location.replace("https://mythsmith.onrender.com/auth/login");//redirect
   };
 
 router.use('/auth', require('./auth'));
